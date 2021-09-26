@@ -75,6 +75,15 @@
             <h1>Welcome to the Amplify Framework</h1>
         </div>
         <div class="app-body">
+            <div id="fileUpload">
+                <h1>Upload some pictures to identify objects with AWS Rekognition:</h1>
+                <div class="input-group mb-3">
+                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
+                    <input type="file" class="form-control" id="inputGroupFile03"
+                        aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+                </div>
+                <div id="LabelsResult"></div>
+            </div>
             <h1>Mutation Results</h1>
             <button id="MutationEventButton">Add data</button>
             <div id="MutationResult"></div>

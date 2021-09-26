@@ -1,4 +1,5 @@
 import { userAuthState } from './auth_user';
+import { Predictions } from 'aws-amplify';
 
 export function checkAuthContent() {
     // If not authenticated, pages with containing the id of 'authenticated-content' will redirect to login.html.
@@ -32,6 +33,7 @@ if (document.querySelector("#MutationEventButton")) {
     const QueryResult = document.getElementById("QueryResult");
     const SubscriptionResult = document.getElementById("SubscriptionResult");
 
+    /*
     async function createNewTodo() {
         const todo = {
             name: "Use AppSync",
@@ -47,15 +49,69 @@ if (document.querySelector("#MutationEventButton")) {
         });
     });
 
+    
     API.graphql(graphqlOperation(onCreateTodo)).subscribe({
         next: (evt) => {
             const todo = evt.value.data.onCreateTodo;
             SubscriptionResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
         },
     });
+    */
 
-    getData();
+    const UploadImageFileButton = document.getElementById("inputGroupFileAddon03");
+    const LabelsResult = document.getElementById("LabelsResult");
+    const file = document.getElementById("inputGroupFile03");
+
+    UploadImageFileButton.addEventListener("click", (evt) => {
+        identifyFromFile(file).then((evt) => {
+            LabelsResult.innerHTML += `<p>${evt} - ${evt}</p>`;
+        });
+    });
+
+    async function identifyFromFile(args) {
+        console.log("identifyFromFile...");
+        //const reader = new FileReader();
+        const file = args.files[0];
+
+        return Predictions.identify({
+            labels: {
+                source: {
+                    file,
+                },
+                type: "LABELS" // "LABELS" will detect objects , "UNSAFE" will detect if content is not safe, "ALL" will do both default on aws-exports.js
+            }
+        }).then(
+            result => {
+                console.log(JSON.stringify(result, null, 2))
+            })
+            .catch(err => {
+                //console.log(JSON.stringify(err, null, 2))
+                console.log(err);
+            })
+
+        /*
+    reader.addEventListener("load", async function (res) {
+        // convert image file to base64 string
+        //preview.src = reader.result;
+        //const [file,] = files || [];
+        const file = res.target.result;
+        
+    }, false);
+
+    if (!filePath) {
+        return;
+    }
+    else {
+        reader.readAsArrayBuffer(filePath);
+    }
+    */
+
+    }
+
+    //getData();
 }
+
+/*
 async function getData() {
     API.graphql(graphqlOperation(listTodos)).then((evt) => {
         evt.data.listTodos.items.map((todo, i) => {
@@ -63,4 +119,5 @@ async function getData() {
         });
     });
 }
+*/
 

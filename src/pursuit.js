@@ -64,7 +64,10 @@ if (document.querySelector("#MutationEventButton")) {
 
     UploadImageFileButton.addEventListener("click", (evt) => {
         identifyFromFile(file).then((evt) => {
-            LabelsResult.innerHTML += `<p>${evt} - ${evt}</p>`;
+            evt.forEach(function(e){
+                LabelsResult.innerHTML += `<p>${e.name}</p>`;
+            })
+            
         });
     });
 
@@ -83,6 +86,7 @@ if (document.querySelector("#MutationEventButton")) {
         }).then(
             result => {
                 console.log(JSON.stringify(result, null, 2))
+                return result.labels;
             })
             .catch(err => {
                 //console.log(JSON.stringify(err, null, 2))

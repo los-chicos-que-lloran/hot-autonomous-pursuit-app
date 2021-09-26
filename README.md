@@ -1,1 +1,1 @@
-# Hot Autonomous Pursuit an Accenture, AWS and Software Guru Hackaton.
+# Hot Autonomous Pursuit an Accenture, AWS and Software Guru Hackathon.

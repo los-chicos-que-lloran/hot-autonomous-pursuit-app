@@ -67,32 +67,27 @@
 </head>
 
 <body>
-    <!-- Main Content -->
-    <section id="auth-signup">
-        <div class="d-flex justify-content-center min-vh-100">
-            <div class="align-self-center">
-                <h2>Sign up</h2>
-                <form id="form-auth-signup">
-                    <div class="mb-3">
-                        <label for="formSignUpEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="formSignUpEmail" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="formSignUpPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="formSignUpPassword">
-                    </div>
-                    <button id="btnSignUp" type="submit" class="btn btn-primary">Sign up</button>
-                </form>
-                <p class="mt-3">
-                    <small>
-                        Already have an account?
-                        <a class="text-decoration-none" href="./login.html">Sign in</a>
-                    </small>
-                </p>
+    <div class="app">
+        <div class="app-header">
+            <div class="app-logo">
+                <img src="https://aws-amplify.github.io/images/Logos/Amplify-Logo-White.svg" alt="AWS Amplify" />
             </div>
+            <h1>Welcome to the Amplify Framework</h1>
         </div>
-    </section>
+        <div class="app-body">
+            <h1>Mutation Results</h1>
+            <button id="MutationEventButton">Add data</button>
+            <div id="MutationResult"></div>
+            <hr />
 
+            <h1>Query Results</h1>
+            <div id="QueryResult"></div>
+            <hr />
+
+            <h1>Subscription Results</h1>
+            <div id="SubscriptionResult"></div>
+        </div>
+    </div>
     <script src="main.bundle.js"></script>
 </body>
 

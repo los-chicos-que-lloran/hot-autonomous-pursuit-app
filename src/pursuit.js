@@ -62,7 +62,7 @@ if (document.querySelector("#MutationEventButton")) {
     const LabelsResult = document.getElementById("LabelsResult");
     const file = document.getElementById("inputGroupFile03");
 
-    UploadImageFileButton.addEventListener("click", (evt) => {
+    UploadImageFileButton.addEventListener("click", (args) => {
         identifyFromFile(file).then((evt) => {
             evt.forEach(function(e){
                 LabelsResult.innerHTML += `<p>${e.name}</p>`;
